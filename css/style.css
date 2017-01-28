@@ -1,0 +1,91 @@
+body {
+  background-color: #1faaee;
+}
+
+.game-board {
+  position: absolute;
+  height: 800px;
+  margin: 30px auto;
+  width: 800px;
+  background-color: white;
+}
+
+.cell {
+  background-size: contain;
+  box-sizing: border-box;
+  float: left;
+  height: 64px;
+  width: 64px;
+}
+
+
+/*.game-board {
+  position: absolute;
+  background-color:  white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin: 0px 20px 0px 20px;
+  z-index: 0;
+}*/
+
+.garbagecan1, .garbagecan2, .garbagecan3 {
+  float: left;
+  display: inline-block;
+  padding: 40px;
+  padding-left: 55px;
+  width: 100px;
+  height: auto;
+  margin-left: 30px;
+  margin-top: 590px;
+}
+
+#organic {
+  width: 100px;
+  height: 150px;
+  background-color: green;
+}
+
+.objects, .floater {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  border: 0;
+}
+
+#scoreboard {
+  position: absolute;
+  font-size: 28px;
+  right: 0;
+  border-radius: 10%;
+  color: #0a65ff;
+  border: 2px solid #0a65ff;
+  background-color: white;
+  padding: 1px 2px 30px 2px;
+  z-index: 999;
+  right: 5px;
+}
+
+
+.button {
+  position: absolute;
+  font-size: 18px;
+  right: 0;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  z-index: 999;
+  margin: 90px 25px;
+  width: 100px;
+  height: 30px
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
