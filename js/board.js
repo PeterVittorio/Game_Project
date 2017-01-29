@@ -6,8 +6,12 @@ $('button').click(function() {
   var player1 = prompt("Please enter your name:");
   players.push(player1);
   console.log(players);
-  shuffle(objects1);
-  visualiseArray();
+  // shuffle(objects1);
+  // visualiseArray();
+  addImgTag();
+  randomiseVisualise();
+  setInterval(objectMove, 800);
+
 });
 
 // Game.prototype.start = function(){
@@ -38,7 +42,9 @@ $('button').click(function() {
 //
 // });
 
-
+function addImgTag() {
+  $('.objects').prepend($('<img>',{class:'floater',src:''}));
+}
 
 
 

@@ -2,6 +2,13 @@ body {
   background-color: #1faaee;
 }
 
+h1 {
+  position: absolute;
+  margin: 0;
+  left: 250px;
+  top:0;
+}
+
 .game-board {
   position: absolute;
   height: 800px;
@@ -10,13 +17,13 @@ body {
   background-color: white;
 }
 
-.cell {
+/*.cell {
   background-size: contain;
   box-sizing: border-box;
   float: left;
   height: 64px;
   width: 64px;
-}
+}*/
 
 
 /*.game-board {
@@ -29,25 +36,82 @@ body {
   z-index: 0;
 }*/
 
-.garbagecan1, .garbagecan2, .garbagecan3 {
-  float: left;
-  display: inline-block;
+.garbagecan1 {
+position: absolute;
+display: block;
+padding: 40px;
+padding-left: 55px;
+width: 100px;
+height: auto;
+margin-left: 100px;
+margin-top: 610px;
+}
+
+.garbagecan2 {
+position: absolute;
+display: block;
+padding: 40px;
+padding-left: 55px;
+width: 100px;
+height: auto;
+margin-left: 300px;
+margin-top: 610px;
+}
+
+.garbagecan3 {
+  position: absolute;
+  display: block;
   padding: 40px;
   padding-left: 55px;
   width: 100px;
   height: auto;
-  margin-left: 30px;
-  margin-top: 590px;
+  margin-left: 500px;
+  margin-top: 610px;
 }
 
 #organic {
+  position: absolute;
   width: 100px;
-  height: 150px;
+  height: 30px;
   background-color: green;
+  color: white;
+  font-size: 28px;
+  padding: 10px;
+  left: 145px;
+  bottom: 0;
+  text-align: center;
+}
+
+#paper {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: blue;
+  color: white;
+  font-size: 28px;
+  padding: 10px;
+  left: 340px;
+  bottom: 0;
+  text-align: center;
+}
+
+#glass {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: #ddda21;
+  color: white;
+  font-size: 28px;
+  padding: 10px;
+  left: 540px;
+  bottom: 0;
+  text-align: center;
 }
 
 .objects, .floater {
   position: absolute;
+  left: 190px;
+  top: 0px;
   width: 50px;
   height: 70px;
   border: 0;
@@ -56,28 +120,32 @@ body {
 #scoreboard {
   position: absolute;
   font-size: 28px;
-  right: 0;
-  border-radius: 10%;
-  color: #0a65ff;
-  border: 2px solid #0a65ff;
-  background-color: white;
-  padding: 1px 2px 30px 2px;
+  top: 40px;
+  color: #ff0a0a;
+  border: 2px solid #ff0a0a;
+  background-color: rgb(0, 0, 0);
+  padding: 1px 5px 30px 5px;
   z-index: 999;
-  right: 5px;
+  right: 25px;
 }
 
+#points {
+  font-size: 22px;
+  color: #ff0a0a;
+}
 
 .button {
   position: absolute;
   font-size: 18px;
   right: 0;
-  background-color: white;
-  color: black;
-  border: 2px solid #4CAF50;
+  background-color: rgb(0, 0, 0);
+  color: #ff0a0a;
+  border: 2px solid #ff0a0a;
+  border-radius: 15%;
   z-index: 999;
-  margin: 90px 25px;
+  margin: 140px 35px;
   width: 100px;
-  height: 30px
+  height: 50px
 }
 
 .button {
@@ -86,6 +154,14 @@ body {
 }
 
 .button:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
+    background-color: #bdb6b6; /* Green */
+    color: #ff0a0a;
+}
+
+#darthvader {
+  position: absolute;
+  top: 38px;
+  right: 20px;
+  width: 450px;
+  height: 800px;
 }
