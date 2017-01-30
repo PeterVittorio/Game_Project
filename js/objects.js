@@ -1,5 +1,5 @@
 var objects1 = [
-  {name: 'bananapeel.png', cat: 'organic'}, {name: 'applecore.jpeg', cat: 'organic'}, {name: 'orangepeel.jpg', cat: 'organic'},
+  {name: 'bananapeel.png', cat: 'organic'}, {name: 'applecore.png', cat: 'organic'}, {name: 'orangepeel.jpg', cat: 'organic'},
   {name: 'fishbone.jpeg', cat: 'organic'}, {name: 'foodpork.png', cat: 'organic'}, {name: 'milkcarton.jpg', cat: 'paper'},
   {name: 'greenbottle.png', cat: 'glass'}, {name: 'tincan.jpg', cat: 'glass'}, {name: 'starbuckscoffeecup.png', cat: 'paper'}, {name: 'starwars.png', cat: 'tiefighter'}];
 
@@ -34,12 +34,17 @@ function randomiseVisualise() {
   $(".floater").attr("src","img/"+pictureSelect);
 }
 
-
 function objectMove() {
-$objects.css('top', $objects.offset().top + 10);
-}
+  $objects.css('top', $objects.offset().top + 10);
+  var a = $('.objects')[0];
+  var objectBottom = a.getBoundingClientRect().bottom;
+  var e = $('.garbagecan1')[0];
+  var garbCan1Top = e.getBoundingClientRect().top;
+  console.log(objectBottom);
+  console.log(garbCan1Top);
 
-// }
+  return objectBottom > garbCan1Top;
+}
 
 var $objects = $('.objects');
 $(document).keydown(function(e) {

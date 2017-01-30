@@ -1,16 +1,23 @@
 $(document).ready(function(){
 
 var players = [];
+var counter = 0;
 
 $('button').click(function() {
-  var player1 = prompt("Please enter your name:");
+  var player1 = "player 1"; //  prompt("Please enter your name:");
   players.push(player1);
-  console.log(players);
   // shuffle(objects1);
   // visualiseArray();
   addImgTag();
   randomiseVisualise();
-  setInterval(objectMove, 800);
+  var h = setInterval(function(){
+    if (objectMove()) {
+      counter++;
+      removeImgTag();
+      clearInterval(h);
+      
+    }
+  }, 800);
 
 });
 
@@ -45,6 +52,11 @@ $('button').click(function() {
 function addImgTag() {
   $('.objects').prepend($('<img>',{class:'floater',src:''}));
 }
+
+function removeImgTag() {
+  $('.objects > img').remove();
+}
+
 
 
 
