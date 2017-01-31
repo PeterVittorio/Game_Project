@@ -2,77 +2,66 @@ body {
   background-color: #1faaee;
 }
 
+.intro {
+
+}
+
+
+.fullscreen {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  border: 5px solid #ff0a0a;
+}
+
 h1 {
   position: absolute;
   margin: 0;
-  right: 60px;
-  font-size: 45px;
-  top: 45px;
+  right: 25px;
+  font-size: 55px;
+  top: 20px;
   color: #ff0a0a;
   z-index: 999;
   text-shadow: 2px 2px white;
 }
 
 .game-board {
-  position: absolute;
-  height: 100vh;
+  float: left;
+  height: 100%;
   top: 0;
   margin: auto;
   width: 800px;
   background-color: white;
-  border: 5px solid #ff0a0a;
 }
 
-/*.cell {
-  background-size: contain;
-  box-sizing: border-box;
-  float: left;
-  height: 64px;
-  width: 64px;
-}*/
-
-
-/*.game-board {
-  position: absolute;
-  background-color:  white;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  margin: 0px 20px 0px 20px;
-  z-index: 0;
-}*/
-
-.garbagecan1 {
+.organicgarbage {
 position: absolute;
 display: block;
-padding: 40px;
-padding-left: 55px;
 width: 100px;
 height: auto;
-margin-left: 100px;
-margin-top: 510px;
+margin-left: 150px;
+margin-top: 495px;
 }
 
-.garbagecan2 {
+.papergarbage {
 position: absolute;
 display: block;
-padding: 40px;
-padding-left: 55px;
 width: 100px;
 height: auto;
-margin-left: 300px;
-margin-top: 510px;
+margin-left: 350px;
+margin-top: 495px;
 }
 
-.garbagecan3 {
+.glassgarbage {
 position: absolute;
 display: block;
-padding: 40px;
-padding-left: 55px;
 width: 100px;
 height: auto;
-margin-left: 500px;
-margin-top: 510px;
+margin-left: 550px;
+margin-top: 495px;
 }
 
 #organic {
@@ -83,7 +72,7 @@ margin-top: 510px;
   color: white;
   font-size: 28px;
   padding: 10px;
-  left: 145px;
+  left: 140px;
   bottom: 0;
   text-align: center;
   border: 1px solid green;
@@ -120,7 +109,7 @@ margin-top: 510px;
   border: 1px solid #ddda21;
 }
 
-.objects, .floater {
+.floater {
   position: absolute;
   left: 190px;
   top: 0px;
@@ -177,10 +166,9 @@ margin-top: 510px;
 }
 
 #darthvader {
-  position: absolute;
+  float: right;
   top: 0;
   right: 2px;
-  width: 450px;
-  height: 100vh;
-  border: 5px solid #ff0a0a;
+  width: 470px;
+  height: 100%;
 }

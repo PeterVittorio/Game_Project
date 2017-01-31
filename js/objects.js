@@ -1,65 +1,105 @@
-var objects1 = [
-  {name: 'bananapeel.png', cat: 'organic'}, {name: 'applecore.png', cat: 'organic'}, {name: 'orangepeel.jpg', cat: 'organic'},
-  {name: 'fishbone.jpeg', cat: 'organic'}, {name: 'foodpork.png', cat: 'organic'}, {name: 'milkcarton.jpg', cat: 'paper'},
-  {name: 'greenbottle.png', cat: 'glass'}, {name: 'tincan.jpg', cat: 'glass'}, {name: 'starbuckscoffeecup.png', cat: 'paper'}, {name: 'starwars.png', cat: 'tiefighter'}];
+var garbage = [{name: 'bananapeel.png', id: 'organic'}, {name: 'applecore.png', id: 'organic'}, {name: 'orangepeel.jpg', id: 'organic'},
+              {name: 'fishbone.jpeg', id: 'organic'}, {name: 'foodpork.png', id: 'organic'}, {name: 'milkcarton.jpg', id: 'paper'},
+              {name: 'greenbottle.png', id: 'glass'}, {name: 'tincan.jpg', id: 'glass'}, {name: 'starbuckscoffeecup.png', id: 'paper'}, {name: 'starwars.png', id: 'tiefighter'}];
 
-// function shuffle(array) {
-//   var currentIndex = array.length, temporaryValue, randomIndex;
-//
-//   // While there remain elements to shuffle...
-//   while (0 !== currentIndex) {
-//
-//     // Pick a remaining element...
-//     randomIndex = Math.floor(Math.random() * currentIndex);
-//     currentIndex -= 1;
-//
-//     // And swap it with the current element.
-//     temporaryValue = array[currentIndex];
-//     array[currentIndex] = array[randomIndex];
-//     array[randomIndex] = temporaryValue;
-//
-//   }
-//   return array;
-// }
+var Garbagecan = [{name: 'organicgarbage', id: 'organic', sound: ''},
+                  {name: 'papergarbage', id: 'paper', sound: ''},
+                  {name: 'glassgarbage', id: 'glass', sound: ''}];
 
-// function visualiseArray(){
-//   for (i=0; i<objects1.length; i++){
-//     $(".floater").attr("src","img/"+objects1[i].name);
-//   }
-// }
+var b = $('.organicgarbage')[0];
+var organicTop = b.getBoundingClientRect().top;
+var organicLeft = b.getBoundingClientRect().left;
+var organicRight = b.getBoundingClientRect().right;
+
+
+var c = $('.papergarbage')[0];
+var paperTop = c.getBoundingClientRect().top;
+var paperLeft = c.getBoundingClientRect().left;
+var paperRight = c.getBoundingClientRect().right;
+
+var d =  $('.glassgarbage')[0];
+var glassTop = d.getBoundingClientRect().top;
+var glassLeft = d.getBoundingClientRect().left;
+var glassRight = d.getBoundingClientRect().right;
+
+var objectBottomGlobal;
+var objectLeftGlobal;
+var objectRightGlobal;
+var objectMidpointGlobal;
+
+var objectContent = '';
+var randomGlobal;
 
 function randomiseVisualise() {
-  var randomPicIndex = Math.floor(Math.random() * objects1.length);
-  var pictureSelect = objects1[randomPicIndex].name;
+  var randomPicIndex = Math.floor(Math.random() * garbage.length);
+  randomGlobal = randomPicIndex;
+  var pictureSelect = garbage[randomPicIndex].name;
+  var pictureID = garbage[randomPicIndex].id;
+  objectContent = pictureID;
   $(".floater").attr("src","img/"+pictureSelect);
 }
 
-function objectMove() {
-  $objects.css('top', $objects.offset().top + 10);
-  var a = $('.objects')[0];
-  var objectBottom = a.getBoundingClientRect().bottom;
-  var e = $('.garbagecan1')[0];
-  var garbCan1Top = e.getBoundingClientRect().top;
-  console.log(objectBottom);
-  console.log(garbCan1Top);
+// var h = setInterval()
 
-  return objectBottom > garbCan1Top;
+function objectMove() {
+    $(".floater").css('top', $(".floater").offset().top + 50);
+    var a = $('.floater')[0];
+    var objectBottom = a.getBoundingClientRect().bottom;
+    objectBottomGlobal = objectBottom;
+    var objectLeft = a.getBoundingClientRect().left;
+    objectLeftGlobal = objectLeft;
+    var objectRight = a.getBoundingClientRect().right;
+    objectRightGlobal = objectRight;
+    var midpoint = (objectLeft + objectRight)/2;
+    objectMidpointGlobal = midpoint;
+      if(objectBottom > organicTop) {
+        confirMatch();
+      }
+      return objectBottom > organicTop;
+    }
+
+
+function impact() {
+      if (objectBottomGlobal > organicTop) {
+        whichGarbageCan();
+      }
+    }
+
+var whichGarbageCan = function () {
+          if ((organicLeft < objectMidpointGlobal) && (objectMidpointGlobal < organicRight)) {
+            return Garbagecan[0].id;
+          } else if ((paperLeft < objectMidpointGlobal) && (objectMidpointGlobal < paperRight)) {
+              return Garbagecan[1].id;
+            } else if ((glassLeft < objectMidpointGlobal) && (objectMidpointGlobal < glassRight)) {
+                return Garbagecan[2].id;
+              }
+            };
+
+function confirMatch (){
+  if (objectContent === whichGarbageCan()) {
+    play_single_sound('audiotag3');
+    counter++;
+    removeImgTag();
+    // clearInterval(h);
+
+    }  else {
+    counter--;
+    removeImgTag();
+    // clearInterval(h);
+    }
 }
 
-var $objects = $('.objects');
 $(document).keydown(function(e) {
+  var $objects = $('.floater');
     switch(e.which) {
       case 37:
           $objects.css('left', $objects.offset().left - 36);
           break;
-      // case 38:
-      //     $objects.css('top', $objects.offset().top - 10);
-      //     break;
       case 39:
           $objects.css('left', $objects.offset().left + 20);
           break;
       case 40:
-          $objects.css('top', $objects.offset().top + 10);
+          $objects.css('top', $objects.offset().top + 30);
           break;
       default: return; // exit this handler for other keys
     }
