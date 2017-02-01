@@ -1,50 +1,33 @@
 var counter = 0;
+var players = [{name:'', points: 0}];
 
 function play_single_sound(name) {
   document.getElementById(name).play();
 }
 play_single_sound('audiotag1');
 
-function removeImgTag() {
-  $('.objects > img').remove();
+function addImgTag() {
+  $('.game-board').prepend($('<img>',{class:'floater',src:''}));
 }
 
-function addImgTag() {
-  $('.objects').prepend($('<img>',{class:'floater',src:''}));
+function removeImgTag() {
+  $('.game-board > img').remove();
 }
 
 $(document).ready(function(){
 
-var myAudio = new Audio('sound/imperial_march.wav');
-myAudio.loop = true;
-myAudio.play();
-
-var players = [{name:'', points: 0}];
+// // var myAudio = new Audio('sound/imperial_march.wav');
+// // myAudio.loop = true;
+// myAudio.play();
 
 $('button').click(function() {
-  var player = "player"; //  prompt("Please enter your name:");
+  var player = prompt("Please enter your name:");
   players.push(player);
   addImgTag();
   randomiseVisualise();
-  var h = setInterval(function(){
-      if (objectMove()) {
-      play_single_sound('audiotag3');
-      counter++;
-      removeImgTag();
-      clearInterval(h);
-    }
-  }, 800);
-  confirmLoss();
+  myInterval();
 });
 
-
-function confirmLoss () {
-  if (counter < 0){
-    removeImgTag();
-    clearInterval(h);
-    alert('Shame on you!!! Improve your recycling skills!!!!');
-  }
-}
 
 
 

@@ -11,7 +11,6 @@ var organicTop = b.getBoundingClientRect().top;
 var organicLeft = b.getBoundingClientRect().left;
 var organicRight = b.getBoundingClientRect().right;
 
-
 var c = $('.papergarbage')[0];
 var paperTop = c.getBoundingClientRect().top;
 var paperLeft = c.getBoundingClientRect().left;
@@ -39,9 +38,8 @@ function randomiseVisualise() {
   $(".floater").attr("src","img/"+pictureSelect);
 }
 
-// var h = setInterval()
-
-function objectMove() {
+function myInterval(){
+ h =  setInterval(function() {
     $(".floater").css('top', $(".floater").offset().top + 50);
     var a = $('.floater')[0];
     var objectBottom = a.getBoundingClientRect().bottom;
@@ -55,15 +53,16 @@ function objectMove() {
       if(objectBottom > organicTop) {
         confirMatch();
       }
-      return objectBottom > organicTop;
-    }
+    }, 800);
+  } 
 
-
-function impact() {
-      if (objectBottomGlobal > organicTop) {
-        whichGarbageCan();
-      }
+function confirmLoss () {
+    if (counter < 0){
+      removeImgTag();
+      alert('Shame on you!!! You should improve your recycling skills!!!!');
+      clear();
     }
+}
 
 var whichGarbageCan = function () {
           if ((organicLeft < objectMidpointGlobal) && (objectMidpointGlobal < organicRight)) {
@@ -75,22 +74,29 @@ var whichGarbageCan = function () {
               }
             };
 
+function clear() {
+  clearInterval(h);
+}
+
 function confirMatch (){
   if (objectContent === whichGarbageCan()) {
     play_single_sound('audiotag3');
     counter++;
-    removeImgTag();
-    // clearInterval(h);
-
-    }  else {
-    counter--;
-    removeImgTag();
-    // clearInterval(h);
+  }  else {
+      play_single_sound('audiotag4');
+      counter--;
     }
+    removeImgTag();
+    clear();
+    confirmLoss();
+    addImgTag();
+    randomiseVisualise();
+    myInterval();
 }
 
 $(document).keydown(function(e) {
   var $objects = $('.floater');
+  if ($objects.length > 0){
     switch(e.which) {
       case 37:
           $objects.css('left', $objects.offset().left - 36);
@@ -101,7 +107,8 @@ $(document).keydown(function(e) {
       case 40:
           $objects.css('top', $objects.offset().top + 30);
           break;
-      default: return; // exit this handler for other keys
+      default: return;
     }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
+    e.preventDefault();
+  }
 });
