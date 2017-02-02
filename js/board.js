@@ -38,6 +38,10 @@ $('button').click(function() {
 });
 
 
+$('#instructions').click(function() {
+document.getElementById('instructions').style.display = 'none';
+});
+
 
 
 
