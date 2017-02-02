@@ -1,6 +1,12 @@
 var garbage = [{name: 'bananapeel.png', id: 'organic'}, {name: 'applecore.png', id: 'organic'}, {name: 'orangepeel.jpg', id: 'organic'},
               {name: 'fishbone.jpeg', id: 'organic'}, {name: 'foodpork.png', id: 'organic'}, {name: 'milkcarton.jpg', id: 'paper'},
-              {name: 'greenbottle.png', id: 'glass'}, {name: 'tincan.jpg', id: 'glass'}, {name: 'starbuckscoffeecup.png', id: 'paper'}, {name: 'starwars.png', id: 'tiefighter'}];
+              {name: 'greenbottle.png', id: 'glass'}, {name: 'tincan.jpg', id: 'glass'}, {name: 'starbuckscoffeecup.png', id: 'paper'},
+              {name: 'bucket.png', id: 'glass'}, {name: 'Budweiser-America-beer-can.png', id: 'glass'}, {name: 'buzzlightyear.png', id: 'plastic'},
+              {name: 'Cocacolacan.png', id: 'glass'}, {name: 'greekyoghurt.png', id: 'paper'}, {name: 'Heinekencan.png', id: 'glass'},
+              {name: 'jackdaniels.png', id: 'glass'}, {name: 'juicecarton.png', id: 'paper'}, {name: 'kilbegganbottle.png', id: 'glass'}, {name: 'largepear.png', id: 'organic'},
+              {name: 'lemon.png', id: 'organic'}, {name: 'lemonperrierplasticbottle.png', id: 'glass'}, {name: 'limes.png', id: 'organic'}, {name: 'pears.png', id: 'organic'},
+              {name: 'perrierbottle.jpg', id: 'glass'}, {name: 'placticcup.png', id: 'glass'}, {name: 'san_miguel_330ml_large.png', id: 'glass'}, {name: 'yogurtcherry.png', id: 'paper'},
+              {name: 'friedchicken.png', id: 'organic'}, {name: 'Campbellscan.png', id: 'glass'}, {name: 'cookie.png', id: 'organic'}];
 
 var Garbagecan = [{name: 'organicgarbage', id: 'organic', sound: ''},
                   {name: 'papergarbage', id: 'paper', sound: ''},
@@ -29,6 +35,8 @@ var objectMidpointGlobal;
 var objectContent = '';
 var randomGlobal;
 
+var speed = 0;
+
 function randomiseVisualise() {
   var randomPicIndex = Math.floor(Math.random() * garbage.length);
   randomGlobal = randomPicIndex;
@@ -40,7 +48,7 @@ function randomiseVisualise() {
 
 function myInterval(){
  h =  setInterval(function() {
-    $(".floater").css('top', $(".floater").offset().top + 50);
+    $(".floater").css('top', $(".floater").offset().top + 60);
     var a = $('.floater')[0];
     var objectBottom = a.getBoundingClientRect().bottom;
     objectBottomGlobal = objectBottom;
@@ -50,17 +58,21 @@ function myInterval(){
     objectRightGlobal = objectRight;
     var midpoint = (objectLeft + objectRight)/2;
     objectMidpointGlobal = midpoint;
+    console.log(speed);
       if(objectBottom > organicTop) {
         confirMatch();
-      }
-    }, 800);
-  } 
+      } speed+=7;
+    }, 800 - speed);
+  }
+
 
 function confirmLoss () {
     if (counter < 0){
       removeImgTag();
       alert('Shame on you!!! You should improve your recycling skills!!!!');
       clear();
+      myAudio.loop = false;
+      play_single_sound('exit');
     }
 }
 
@@ -86,12 +98,13 @@ function confirMatch (){
       play_single_sound('audiotag4');
       counter--;
     }
+    updateScoreboard();
     removeImgTag();
     clear();
-    confirmLoss();
     addImgTag();
     randomiseVisualise();
     myInterval();
+    confirmLoss();
 }
 
 $(document).keydown(function(e) {
