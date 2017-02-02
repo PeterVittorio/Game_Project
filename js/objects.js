@@ -1,7 +1,7 @@
 var garbage = [{name: 'bananapeel.png', id: 'organic'}, {name: 'applecore.png', id: 'organic'}, {name: 'orangepeel.jpg', id: 'organic'},
               {name: 'fishbone.jpeg', id: 'organic'}, {name: 'foodpork.png', id: 'organic'}, {name: 'milkcarton.jpg', id: 'paper'},
               {name: 'greenbottle.png', id: 'glass'}, {name: 'tincan.jpg', id: 'glass'}, {name: 'starbuckscoffeecup.png', id: 'paper'},
-              {name: 'bucket.png', id: 'glass'}, {name: 'Budweiser-America-beer-can.png', id: 'glass'}, {name: 'buzzlightyear.png', id: 'plastic'},
+              {name: 'bucket.png', id: 'glass'}, {name: 'Budweiser-America-beer-can.png', id: 'glass'}, {name: 'buzzlightyear.png', id: 'glass'},
               {name: 'Cocacolacan.png', id: 'glass'}, {name: 'greekyoghurt.png', id: 'paper'}, {name: 'Heinekencan.png', id: 'glass'},
               {name: 'jackdaniels.png', id: 'glass'}, {name: 'juicecarton.png', id: 'paper'}, {name: 'kilbegganbottle.png', id: 'glass'}, {name: 'largepear.png', id: 'organic'},
               {name: 'lemon.png', id: 'organic'}, {name: 'lemonperrierplasticbottle.png', id: 'glass'}, {name: 'limes.png', id: 'organic'}, {name: 'pears.png', id: 'organic'},
@@ -58,21 +58,19 @@ function myInterval(){
     objectRightGlobal = objectRight;
     var midpoint = (objectLeft + objectRight)/2;
     objectMidpointGlobal = midpoint;
-    console.log(speed);
       if(objectBottom > organicTop) {
         confirMatch();
-      } speed+=7;
+      } speed+=4;
     }, 800 - speed);
   }
 
 
 function confirmLoss () {
-    if (counter < 0){
+    if (misses === 3){
       removeImgTag();
-      alert('Shame on you!!! You should improve your recycling skills!!!!');
       clear();
+      alert('Shame on you!!! You should improve your recycling skills!!!!');
       myAudio.loop = false;
-      play_single_sound('exit');
     }
 }
 
@@ -90,15 +88,28 @@ function clear() {
   clearInterval(h);
 }
 
+function eventCounter() {
+  switch(counter) {
+    case 5:
+      play_single_sound('forcestrong');
+      break;
+    case 10:
+      play_single_sound('jabba');
+     break;
+  default:
+}
+}
+
 function confirMatch (){
   if (objectContent === whichGarbageCan()) {
     play_single_sound('audiotag3');
     counter++;
   }  else {
       play_single_sound('audiotag4');
-      counter--;
+      misses++;
     }
     updateScoreboard();
+    eventCounter();
     removeImgTag();
     clear();
     addImgTag();
@@ -106,6 +117,8 @@ function confirMatch (){
     myInterval();
     confirmLoss();
 }
+
+
 
 $(document).keydown(function(e) {
   var $objects = $('.floater');

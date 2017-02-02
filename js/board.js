@@ -1,11 +1,10 @@
 var counter = 0;
+var misses = 0;
 var players = [{name:'', points: 0}];
 
 function play_single_sound(name) {
   document.getElementById(name).play();
 }
-
-play_single_sound('exit');
 
 function updateScoreboard () {
   $('#points').text('Points: ' +counter);
@@ -21,9 +20,9 @@ function removeImgTag() {
 
 var myAudio = new Audio('sound/imperial_march.wav');
 myAudio.loop = true;
+myAudio.play();
 
 $(document).ready(function(){
-
 
 
 $('button').click(function() {
@@ -31,19 +30,11 @@ $('button').click(function() {
   players.push(player);
   $('#player').text('Player: '+player);
   play_single_sound('audiotag1');
-  myAudio.play();
+  document.getElementById('titlecontent').style.display = 'none';
   addImgTag();
   randomiseVisualise();
   myInterval();
 });
-
-
-$('#instructions').click(function() {
-document.getElementById('instructions').style.display = 'none';
-});
-
-
-
 
 
 
