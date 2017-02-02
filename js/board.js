@@ -5,7 +5,7 @@ function play_single_sound(name) {
   document.getElementById(name).play();
 }
 
-play_single_sound('audiotag1');
+play_single_sound('exit');
 
 function updateScoreboard () {
   $('#points').text('Points: ' +counter);
@@ -30,6 +30,7 @@ $('button').click(function() {
   var player = prompt("Please enter your name:");
   players.push(player);
   $('#player').text('Player: '+player);
+  play_single_sound('audiotag1');
   myAudio.play();
   addImgTag();
   randomiseVisualise();
