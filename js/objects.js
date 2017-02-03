@@ -1,7 +1,7 @@
 var garbage = [{name: 'bananapeel.png', id: 'organic'}, {name: 'applecore.png', id: 'organic'}, {name: 'orangepeel.jpg', id: 'organic'},
               {name: 'fishbone.jpeg', id: 'organic'}, {name: 'foodpork.png', id: 'organic'}, {name: 'milkcarton.jpg', id: 'paper'},
               {name: 'greenbottle.png', id: 'glass'}, {name: 'tincan.jpg', id: 'glass'}, {name: 'starbuckscoffeecup.png', id: 'paper'},
-              {name: 'bucket.png', id: 'glass'}, {name: 'Budweiser-America-beer-can.png', id: 'glass'}, {name: 'buzzlightyear.png', id: 'glass'},
+              {name: 'bucket.png', id: 'glass'}, {name: 'buzzlightyear.png', id: 'glass'},
               {name: 'Cocacolacan.png', id: 'glass'}, {name: 'greekyoghurt.png', id: 'paper'}, {name: 'Heinekencan.png', id: 'glass'},
               {name: 'jackdaniels.png', id: 'glass'}, {name: 'juicecarton.png', id: 'paper'}, {name: 'kilbegganbottle.png', id: 'glass'}, {name: 'largepear.png', id: 'organic'},
               {name: 'lemon.png', id: 'organic'}, {name: 'lemonperrierplasticbottle.png', id: 'glass'}, {name: 'limes.png', id: 'organic'}, {name: 'pears.png', id: 'organic'},

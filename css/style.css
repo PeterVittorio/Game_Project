@@ -76,7 +76,7 @@ display: block;
 width: 100px;
 height: auto;
 margin-left: 150px;
-margin-top: 43%;
+margin-top: 37%;
 }
 
 .organicgarbage-ini {
@@ -94,7 +94,7 @@ display: block;
 width: 100px;
 height: auto;
 margin-left: 350px;
-margin-top: 43%;
+margin-top: 37%;
 }
 
 .papergarbage-ini {
@@ -112,7 +112,7 @@ display: block;
 width: 100px;
 height: auto;
 margin-left: 560px;
-margin-top: 43%;
+margin-top: 37%;
 }
 
 .glassgarbage-ini {
@@ -219,7 +219,7 @@ margin-top: 36%;
   border: 2px solid #ff0a0a;
   border-radius: 7%;
   z-index: 50;
-  margin: 630px 15px;
+  margin: 560px 15px;
   width: 120px;
   height: 50px
 }
@@ -260,6 +260,6 @@ margin-top: 36%;
   right: 2px;
   width: 470px;
   height: 100%;
-  opacity: 0.4;
+  opacity: 0.3;
   border-left: 1px solid blue;
   }
